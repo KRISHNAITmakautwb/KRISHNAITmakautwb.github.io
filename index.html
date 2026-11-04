@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Krishna Saha | AI Security &amp; Cryptography Engineer</title>
+  <meta name="description" content="Portfolio of Krishna Saha - AI Security &amp; Cryptography Engineer at IIT Bhilai. Specializing in Quantum-Safe Cryptography, LLMs, AI Agents, and High-Assurance Systems." />
+  <meta name="keywords" content="Krishna Saha, AI Security, Cryptography, Quantum-Safe, IIT Bhilai, FinTeQ, PKCS#11, LLM, PAdES, Agentic AI" />
+  <meta name="author" content="Krishna Saha" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Krishna Saha | AI Security &amp; Cryptography Engineer" />
+  <meta property="og:description" content="AI Security, Post-Quantum Cryptography, and Secure LLM Architectures at IIT Bhilai." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://krishnaitmakautwb.github.io" />
+
+  <!-- Google Fonts & Tailwind -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#070b14',
+              surface: '#0d1527',
+              card: '#111c35',
+              border: '#1f2e52',
+              cyan: '#00f2fe',
+              blue: '#4facfe',
+              emerald: '#10b981',
+              purple: '#a855f7',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'glow': 'glow 3s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            glow: {
+              '0%': { boxShadow: '0 0 15px rgba(0, 242, 254, 0.2)' },
+              '100%': { boxShadow: '0 0 35px rgba(0, 242, 254, 0.55)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #070b14;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f2e52;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00f2fe;
+    }
+
+    .glass-card {
+      background: rgba(17, 28, 53, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(31, 46, 82, 0.8);
+      transition: all 0.3s ease;
+    }
+    .glass-card:hover {
+      border-color: rgba(0, 242, 254, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px -10px rgba(0, 242, 254, 0.15);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .matrix-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.3;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-slate-200 font-sans antialiased selection:bg-brand-cyan/20 selection:text-brand-cyan min-h-screen flex flex-col relative overflow-x-hidden">
+
+  <!-- Background Canvas for Neural/Cryptography Particles -->
+  <canvas id="bg-canvas" class="matrix-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-brand-dark/80 backdrop-blur-md border-b border-brand-border/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#hero" class="flex items-center space-x-3 group">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-brand-cyan to-brand-purple flex items-center justify-center p-0.5 shadow-lg group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-brand-dark rounded-[7px] flex items-center justify-center">
+            <span class="font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue text-sm">&lt;KS/&gt;</span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-sm tracking-wide text-white group-hover:text-brand-cyan transition-colors">Krishna Saha</span>
+          <span class="text-[10px] text-slate-400 font-mono">IIT Bhilai &bull; AI &amp; Crypto</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center space-x-7 text-xs uppercase tracking-wider font-mono">
+        <a href="#about" class="text-slate-400 hover:text-brand-cyan transition-colors">01. About</a>
+        <a href="#research" class="text-slate-400 hover:text-brand-cyan transition-colors">02. Focus</a>
+        <a href="#skills" class="text-slate-400 hover:text-brand-cyan transition-colors">03. Stack</a>
+        <a href="#projects" class="text-slate-400 hover:text-brand-cyan transition-colors">04. Projects</a>
+        <a href="#terminal" class="text-slate-400 hover:text-brand-cyan transition-colors">05. Terminal</a>
+        <a href="#contact" class="text-slate-400 hover:text-brand-cyan transition-colors">06. Contact</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="hidden sm:flex items-center space-x-3">
+        <a href="https://github.com/KRISHNAITmakautwb" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-xs font-mono px-3.5 py-1.5 rounded-lg border border-brand-border bg-brand-surface/70 hover:border-brand-cyan text-slate-300 hover:text-white transition-all shadow-sm">
+          <i data-lucide="github" class="w-4 h-4 text-brand-cyan"></i>
+          <span>GitHub</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button id="mobile-menu-btn" class="md:hidden text-slate-400 hover:text-white p-2 rounded-lg" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-brand-surface border-b border-brand-border px-6 py-4 space-y-3 font-mono text-xs">
+      <a href="#about" class="block py-2 text-slate-300 hover:text-brand-cyan">01. About</a>
+      <a href="#research" class="block py-2 text-slate-300 hover:text-brand-cyan">02. Focus</a>
+      <a href="#skills" class="block py-2 text-slate-300 hover:text-brand-cyan">03. Stack</a>
+      <a href="#projects" class="block py-2 text-slate-300 hover:text-brand-cyan">04. Projects</a>
+      <a href="#terminal" class="block py-2 text-slate-300 hover:text-brand-cyan">05. Terminal</a>
+      <a href="#contact" class="block py-2 text-slate-300 hover:text-brand-cyan">06. Contact</a>
+      <div class="pt-2 border-t border-brand-border flex items-center justify-between">
+        <a href="https://github.com/KRISHNAITmakautwb" target="_blank" class="flex items-center space-x-2 text-brand-cyan">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span>@KRISHNAITmakautwb</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow z-10 pt-20">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 flex flex-col justify-center min-h-[85vh]">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-surface border border-brand-border text-xs font-mono text-brand-cyan w-fit mb-6 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-brand-emerald animate-ping"></span>
+        <span class="text-slate-300">Project Associate @ IIT Bhilai</span>
+        <span class="text-slate-500">|</span>
+        <span class="text-brand-cyan">MeitY FinTeQ Project</span>
+      </div>
+
+      <div class="max-w-4xl space-y-5">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
+          Engineering Secure <br />
+          <span class="gradient-text">AI &amp; Quantum-Safe</span> Systems.
+        </h1>
+
+        <p class="text-lg sm:text-xl text-slate-400 font-light max-w-2xl leading-relaxed">
+          I am <strong class="text-slate-100 font-semibold">Krishna Saha</strong>, an AI Security &amp; Cryptography Engineer dedicated to bridging practical cryptography with next-generation agentic AI and local LLM architectures.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="pt-4 flex flex-wrap items-center gap-4">
+          <a href="#projects" class="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-brand-dark font-semibold text-sm hover:opacity-90 transition-all flex items-center space-x-2 shadow-lg shadow-brand-cyan/20">
+            <span>Explore Projects</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#terminal" class="px-6 py-3 rounded-xl bg-brand-surface border border-brand-border hover:border-brand-cyan text-slate-200 font-mono text-sm hover:text-brand-cyan transition-all flex items-center space-x-2">
+            <i data-lucide="terminal" class="w-4 h-4 text-brand-cyan"></i>
+            <span>Interactive Terminal</span>
+          </a>
+          <a href="#contact" class="px-6 py-3 rounded-xl hover:bg-brand-surface text-slate-400 hover:text-white font-medium text-sm transition-all flex items-center space-x-2">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <span>Get in Touch</span>
+          </a>
+        </div>
+
+        <!-- Quick Stats Grid -->
+        <div class="pt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-brand-border/60">
+          <div class="glass-card p-4 rounded-xl">
+            <div class="text-2xl font-bold font-mono text-brand-cyan">IIT Bhilai</div>
+            <div class="text-xs text-slate-400 mt-1">MeitY FinTeQ Research</div>
+          </div>
+          <div class="glass-card p-4 rounded-xl">
+            <div class="text-2xl font-bold font-mono text-brand-blue">PQC &amp; PKCS#11</div>
+            <div class="text-xs text-slate-400 mt-1">Quantum-Safe Auth</div>
+          </div>
+          <div class="glass-card p-4 rounded-xl">
+            <div class="text-2xl font-bold font-mono text-brand-purple">MoE Analysis</div>
+            <div class="text-xs text-slate-400 mt-1">Cryptanalytic Extraction</div>
+          </div>
+          <div class="glass-card p-4 rounded-xl">
+            <div class="text-2xl font-bold font-mono text-brand-emerald">Local LLMs</div>
+            <div class="text-xs text-slate-400 mt-1">Agentic AI &amp; RAG</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 bg-brand-surface/40 border-y border-brand-border/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center space-x-3 mb-12">
+          <span class="text-brand-cyan font-mono text-sm font-semibold">01.</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wide">About Me</h2>
+          <div class="h-[1px] bg-brand-border flex-grow max-w-xs"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-7 space-y-5 text-slate-300 leading-relaxed text-sm sm:text-base">
+            <p>
+              I am an AI Security and Cryptography Engineer passionate about developing robust, high-assurance digital infrastructure for real-world applications.
+            </p>
+            <p>
+              Currently, I serve as a <strong class="text-white">Project Associate at IIT Bhilai</strong>, actively contributing to the Ministry of Electronics and Information Technology (<strong class="text-white">MeitY</strong>) funded <strong class="text-brand-cyan">FinTeQ</strong> project. My core focus lies in the convergence of <strong class="text-white">post-quantum cryptography (PQC)</strong>, hardware security tokens (PKCS#11, smartcards), and high-integrity financial transaction verification.
+            </p>
+            <p>
+              Beyond cryptography, I actively research and construct <strong class="text-white">private, privacy-preserving AI systems</strong>: deployable local LLM architectures (Ollama, vLLM), autonomous AI agent workflows with type-safe dispatchers, and cryptanalytic model parameter recovery methods.
+            </p>
+            <div class="p-4 rounded-xl bg-brand-card/70 border border-brand-border flex items-start space-x-3 text-xs sm:text-sm font-mono text-slate-300">
+              <i data-lucide="shield-check" class="w-5 h-5 text-brand-emerald flex-shrink-0 mt-0.5"></i>
+              <div>
+                <span class="text-white font-semibold">Research Mission:</span> Bridging quantum-resilient cryptography with autonomous agent architectures to ensure uncompromised privacy, verifiability, and security.
+              </div>
+            </div>
+          </div>
+
+          <!-- Highlight Box -->
+          <div class="lg:col-span-5 space-y-4">
+            <div class="glass-card p-6 rounded-2xl relative overflow-hidden">
+              <div class="absolute -right-6 -top-6 w-32 h-32 bg-brand-cyan/10 rounded-full blur-2xl"></div>
+              <h3 class="text-sm font-mono uppercase tracking-wider text-brand-cyan mb-4 flex items-center space-x-2">
+                <i data-lucide="cpu" class="w-4 h-4"></i>
+                <span>Current Affiliation &amp; Work</span>
+              </h3>
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-emerald mt-1 flex-shrink-0"></i>
+                  <div>
+                    <span class="text-white font-medium">IIT Bhilai</span>
+                    <p class="text-xs text-slate-400">Project Associate, FinTeQ Laboratory</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-emerald mt-1 flex-shrink-0"></i>
+                  <div>
+                    <span class="text-white font-medium">Quantum-Safe Financial Framework</span>
+                    <p class="text-xs text-slate-400">PQC authentication, ISO/PAdES digital signatures &amp; PKI</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-emerald mt-1 flex-shrink-0"></i>
+                  <div>
+                    <span class="text-white font-medium">Autonomous Agent &amp; LLM Security</span>
+                    <p class="text-xs text-slate-400">Type-safe routing, MoE black-box parameter auditing</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH & CORE FOCUS SECTION -->
+    <section id="research" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center space-x-3 mb-12">
+          <span class="text-brand-cyan font-mono text-sm font-semibold">02.</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wide">Core Research &amp; Focus Areas</h2>
+          <div class="h-[1px] bg-brand-border flex-grow max-w-xs"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan mb-5">
+                <i data-lucide="lock" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Quantum-Safe Cryptography</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                Implementation of NIST post-quantum cryptographic standards (Dilithium, Falcon, Kyber) for banking and financial networks, ensuring resistance to Shor's algorithm.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-brand-cyan">
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">Dilithium</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">Falcon</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">Kyber</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">PKI</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center text-brand-blue mb-5">
+                <i data-lucide="shield-alert" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">High-Assurance Signatures &amp; Sentinel</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                PAdES &amp; ISO 32000-1/2 validation engines, PKCS#7 / PKCS#11 hardware token integration, X.509 certificate trust verification, and PDF Shadow Attack detection.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-brand-blue">
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">PAdES</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">PKCS#11</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">ISO 32000</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">Shadow Attacks</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-brand-purple/10 border border-brand-purple/30 flex items-center justify-center text-brand-purple mb-5">
+                <i data-lucide="binary" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">AI Cryptanalysis &amp; MoE Extraction</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                Reverse-engineering and cryptanalytic parameter recovery of Mixture-of-Experts (MoE) deep models via black-box query access and gate boundary analysis.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-brand-purple">
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">MoE Auditing</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">Parameter Recovery</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">Model Theft Defense</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-brand-emerald/10 border border-brand-emerald/30 flex items-center justify-center text-brand-emerald mb-5">
+                <i data-lucide="bot" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Agentic AI &amp; Type-Safe Routers</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                Building deterministic, typed agent systems that reliably map open-ended natural language requests into mathematically sound, constrained action spaces.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-brand-emerald">
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">AI Agents</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">Pydantic</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">TypeSafe Router</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">Tool Dispatch</span>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan mb-5">
+                <i data-lucide="server" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Local &amp; Sovereign AI Systems</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                Self-hosted, air-gapped LLM orchestration pipelines using Ollama, Open WebUI, FastAPI, and SurrealDB for high-security enterprise environments.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-brand-cyan">
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">Ollama</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">SurrealDB</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">FastAPI</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">RAG</span>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center text-brand-blue mb-5">
+                <i data-lucide="code-2" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Low-Level Crypto &amp; C Hardware</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                Direct hardware token communication using C, PKCS#11 slots, HSM (Hardware Security Modules), and symmetric block cipher primitives (AES-GCM, ECC curves).
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-brand-blue">
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">C / C++</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">HSM</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">PKCS#11</span>
+              <span class="px-2 py-0.5 rounded bg-brand-surface border border-brand-border">AES / ECC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK SECTION -->
+    <section id="skills" class="py-20 bg-brand-surface/40 border-y border-brand-border/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center space-x-3 mb-12">
+          <span class="text-brand-cyan font-mono text-sm font-semibold">03.</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wide">Technical Arsenal</h2>
+          <div class="h-[1px] bg-brand-border flex-grow max-w-xs"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Column 1 -->
+          <div class="glass-card p-5 rounded-xl space-y-4">
+            <h3 class="font-mono text-sm font-bold text-brand-cyan uppercase tracking-wider flex items-center space-x-2">
+              <i data-lucide="terminal-square" class="w-4 h-4"></i>
+              <span>Languages</span>
+            </h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">Python 3.11+</span>
+                <span class="font-mono text-xs text-brand-cyan">Advanced</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">C / Low-Level</span>
+                <span class="font-mono text-xs text-brand-cyan">Core</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">Bash / Shell</span>
+                <span class="font-mono text-xs text-brand-cyan">Advanced</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">SQL / SurrealQL</span>
+                <span class="font-mono text-xs text-brand-cyan">Proficient</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="glass-card p-5 rounded-xl space-y-4">
+            <h3 class="font-mono text-sm font-bold text-brand-blue uppercase tracking-wider flex items-center space-x-2">
+              <i data-lucide="key" class="w-4 h-4"></i>
+              <span>Security &amp; Crypto</span>
+            </h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">PKCS#11 / PKCS#7</span>
+                <span class="font-mono text-xs text-brand-blue">Hardware</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">Post-Quantum (PQC)</span>
+                <span class="font-mono text-xs text-brand-blue">Kyber/Falcon</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">AES, ECC, RSA, SHA-3</span>
+                <span class="font-mono text-xs text-brand-blue">Primitives</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">PAdES &amp; ISO 32000</span>
+                <span class="font-mono text-xs text-brand-blue">Standards</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="glass-card p-5 rounded-xl space-y-4">
+            <h3 class="font-mono text-sm font-bold text-brand-purple uppercase tracking-wider flex items-center space-x-2">
+              <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+              <span>AI / ML &amp; LLMs</span>
+            </h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">PyTorch &amp; HuggingFace</span>
+                <span class="font-mono text-xs text-brand-purple">Core ML</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">LangChain &amp; Agents</span>
+                <span class="font-mono text-xs text-brand-purple">Pipelines</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">Ollama &amp; Open WebUI</span>
+                <span class="font-mono text-xs text-brand-purple">Local LLM</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">Vector DBs / RAG</span>
+                <span class="font-mono text-xs text-brand-purple">Retrieval</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 4 -->
+          <div class="glass-card p-5 rounded-xl space-y-4">
+            <h3 class="font-mono text-sm font-bold text-brand-emerald uppercase tracking-wider flex items-center space-x-2">
+              <i data-lucide="box" class="w-4 h-4"></i>
+              <span>Infra &amp; Tools</span>
+            </h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">FastAPI &amp; Uvicorn</span>
+                <span class="font-mono text-xs text-brand-emerald">APIs</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">Docker &amp; Compose</span>
+                <span class="font-mono text-xs text-brand-emerald">Containers</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">Linux / Arch / Ubuntu</span>
+                <span class="font-mono text-xs text-brand-emerald">Environment</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface/60 border border-brand-border">
+                <span class="text-slate-200">Git / GitHub Actions</span>
+                <span class="font-mono text-xs text-brand-emerald">DevOps</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between mb-12">
+          <div class="flex items-center space-x-3">
+            <span class="text-brand-cyan font-mono text-sm font-semibold">04.</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wide">Featured Projects</h2>
+            <div class="h-[1px] bg-brand-border flex-grow max-w-xs"></div>
+          </div>
+          <a href="https://github.com/KRISHNAITmakautwb" target="_blank" class="hidden sm:flex items-center space-x-2 text-xs font-mono text-brand-cyan hover:underline">
+            <span>View All Repositories</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <!-- Project 1: FinTeQ Framework -->
+          <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border-brand-border/80 relative overflow-hidden group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan">
+                    IIT Bhilai / MeitY
+                  </span>
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono bg-brand-surface border border-brand-border text-slate-300">
+                    Flagship Research
+                  </span>
+                </div>
+                <i data-lucide="shield-check" class="w-5 h-5 text-brand-cyan"></i>
+              </div>
+
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-cyan transition-colors">
+                FinTeQ: Quantum-Safe Financial Framework
+              </h3>
+
+              <p class="text-slate-400 text-sm leading-relaxed">
+                National research initiative funded by MeitY focused on next-generation financial transaction security. Incorporates post-quantum cryptographic primitives, hardware security tokens, and quantum-resistant authentication models to protect high-stakes banking transactions from future quantum cryptanalytic attacks.
+              </p>
+            </div>
+
+            <div class="pt-6 mt-4 border-t border-brand-border/50 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-2 font-mono text-xs text-slate-400">
+                <span>PQC</span> &bull; <span>PKCS#11</span> &bull; <span>Quantum Security</span> &bull; <span>Financial PKI</span>
+              </div>
+              <span class="text-xs text-brand-cyan font-mono flex items-center space-x-1">
+                <span>Research Active</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Project 2: PDF Digital Signature Sentinel -->
+          <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border-brand-border/80 relative overflow-hidden group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold bg-brand-blue/10 border border-brand-blue/30 text-brand-blue">
+                    Security Sentinel
+                  </span>
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono bg-brand-surface border border-brand-border text-slate-300">
+                    Production System
+                  </span>
+                </div>
+                <a href="https://github.com/KRISHNAITmakautwb/pdf-signature-validator" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="View Source">
+                  <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+              </div>
+
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-blue transition-colors">
+                Lab PDF Digital Signature Sentinel
+              </h3>
+
+              <p class="text-slate-400 text-sm leading-relaxed">
+                A high-assurance digital signature validation portal and REST API conforming to <strong>ISO 32000-1 / ISO 32000-2</strong> and <strong>PAdES</strong> standards. Performs byte-range integrity checks, X.509 certificate trust path verification, and detects malicious PDF Shadow Attacks across enterprise documentation.
+              </p>
+            </div>
+
+            <div class="pt-6 mt-4 border-t border-brand-border/50 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-2 font-mono text-xs text-slate-400">
+                <span>FastAPI</span> &bull; <span>pyHanko</span> &bull; <span>Cryptography</span> &bull; <span>Docker</span>
+              </div>
+              <a href="https://github.com/KRISHNAITmakautwb/pdf-signature-validator" target="_blank" class="text-xs text-brand-blue font-mono flex items-center space-x-1 hover:underline">
+                <span>Repository</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 3: Mixture-of-Experts Cryptanalytic Extraction -->
+          <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border-brand-border/80 relative overflow-hidden group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold bg-brand-purple/10 border border-brand-purple/30 text-brand-purple">
+                    AI Cryptanalysis
+                  </span>
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono bg-brand-surface border border-brand-border text-slate-300">
+                    Experimental Paper
+                  </span>
+                </div>
+                <a href="https://github.com/KRISHNAITmakautwb/moe_extraction" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="View Source">
+                  <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+              </div>
+
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-purple transition-colors">
+                MoE Parameter Recovery &amp; Cryptanalytic Extraction
+              </h3>
+
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Cryptanalytic extraction framework demonstrating exact parameter recovery for single-layer Mixture-of-Experts (MoE) architectures via black-box query access. Explores gating function boundary signatures, top-2 routing extraction, and model confidentiality auditing.
+              </p>
+            </div>
+
+            <div class="pt-6 mt-4 border-t border-brand-border/50 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-2 font-mono text-xs text-slate-400">
+                <span>PyTorch</span> &bull; <span>Model Auditing</span> &bull; <span>Black-Box Crypto</span> &bull; <span>Linear Algebra</span>
+              </div>
+              <a href="https://github.com/KRISHNAITmakautwb/moe_extraction" target="_blank" class="text-xs text-brand-purple font-mono flex items-center space-x-1 hover:underline">
+                <span>Repository</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 4: Local NoteBookLM Architecture -->
+          <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border-brand-border/80 relative overflow-hidden group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold bg-brand-emerald/10 border border-brand-emerald/30 text-brand-emerald">
+                    Private AI System
+                  </span>
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono bg-brand-surface border border-brand-border text-slate-300">
+                    Self-Hosted
+                  </span>
+                </div>
+                <a href="https://github.com/KRISHNAITmakautwb/local-notebooklm" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="View Source">
+                  <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+              </div>
+
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-emerald transition-colors">
+                Local NoteBookLM (de.ci.phe.red Lab)
+              </h3>
+
+              <p class="text-slate-400 text-sm leading-relaxed">
+                A private, fully sovereign self-hosted NotebookLM implementation. Powered by SurrealDB multi-model storage, asynchronous background task workers, FastAPI backend via <code>uv</code>, and an intuitive Next.js 15 interface managed with PM2 for zero-cloud data leakages.
+              </p>
+            </div>
+
+            <div class="pt-6 mt-4 border-t border-brand-border/50 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-2 font-mono text-xs text-slate-400">
+                <span>SurrealDB</span> &bull; <span>FastAPI</span> &bull; <span>Next.js 15</span> &bull; <span>Local LLMs</span>
+              </div>
+              <a href="https://github.com/KRISHNAITmakautwb/local-notebooklm" target="_blank" class="text-xs text-brand-emerald font-mono flex items-center space-x-1 hover:underline">
+                <span>Repository</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 5: Crypto TypeSafe Router -->
+          <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border-brand-border/80 relative overflow-hidden group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan">
+                    Agent Dispatcher
+                  </span>
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono bg-brand-surface border border-brand-border text-slate-300">
+                    Type-Safe CLI
+                  </span>
+                </div>
+                <a href="https://github.com/KRISHNAITmakautwb/crypto-typesafe-router" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="View Source">
+                  <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+              </div>
+
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-cyan transition-colors">
+                Crypto TypeSafe Router
+              </h3>
+
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Routes arbitrary natural-language crypto market requests into typed, read-only tools using TypeSafe (System One API). Implements strict schema validation, deterministic dry-runs, and token-constrained action execution.
+              </p>
+            </div>
+
+            <div class="pt-6 mt-4 border-t border-brand-border/50 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-2 font-mono text-xs text-slate-400">
+                <span>Python CLI</span> &bull; <span>TypeSafe SDK</span> &bull; <span>Pydantic</span> &bull; <span>Pytest</span>
+              </div>
+              <a href="https://github.com/KRISHNAITmakautwb/crypto-typesafe-router" target="_blank" class="text-xs text-brand-cyan font-mono flex items-center space-x-1 hover:underline">
+                <span>Repository</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 6: PKCS-7 / PKCS-11 Android Validation -->
+          <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border-brand-border/80 relative overflow-hidden group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold bg-brand-blue/10 border border-brand-blue/30 text-brand-blue">
+                    Hardware PKI
+                  </span>
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono bg-brand-surface border border-brand-border text-slate-300">
+                    Android &amp; Token
+                  </span>
+                </div>
+                <i data-lucide="smartphone" class="w-5 h-5 text-brand-blue"></i>
+              </div>
+
+              <h3 class="text-xl font-bold text-white group-hover:text-brand-blue transition-colors">
+                Android PKCS#11 &amp; PKCS#7 Cryptographic Engine
+              </h3>
+
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Direct integration with hardware cryptographic tokens over OTG and secure elements on mobile devices. Handles native PKCS#11 cryptographic operations, key-pair generation, on-device digital signature verification, and secure certificate store management.
+              </p>
+            </div>
+
+            <div class="pt-6 mt-4 border-t border-brand-border/50 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-2 font-mono text-xs text-slate-400">
+                <span>PKCS#11</span> &bull; <span>Android NDK</span> &bull; <span>C / Java</span> &bull; <span>Cryptoki</span>
+              </div>
+              <span class="text-xs text-slate-400 font-mono">Mobile Security</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE TERMINAL SECTION -->
+    <section id="terminal" class="py-20 bg-brand-surface/40 border-y border-brand-border/40">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between mb-8">
+          <div class="flex items-center space-x-3">
+            <span class="text-brand-cyan font-mono text-sm font-semibold">05.</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wide">Interactive Security Terminal</h2>
+            <div class="h-[1px] bg-brand-border flex-grow max-w-xs"></div>
+          </div>
+          <span class="hidden sm:inline-flex text-xs font-mono text-brand-emerald items-center space-x-1.5">
+            <span class="w-2 h-2 rounded-full bg-brand-emerald"></span>
+            <span>Console Online</span>
+          </span>
+        </div>
+
+        <!-- Terminal Window -->
+        <div class="rounded-2xl border border-brand-border bg-[#050811] shadow-2xl overflow-hidden font-mono text-xs sm:text-sm">
+          <!-- Window Header -->
+          <div class="bg-brand-surface px-4 py-3 border-b border-brand-border flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+              <span class="ml-2 text-xs text-slate-400 font-mono">crypto-sentinel@krishna-saha: ~/finteq-lab</span>
+            </div>
+            <div class="flex items-center space-x-3 text-slate-500 text-[11px]">
+              <span>bash 5.2</span>
+              <span>TLS 1.3</span>
+            </div>
+          </div>
+
+          <!-- Window Body -->
+          <div id="terminal-body" class="p-6 h-80 overflow-y-auto space-y-2 text-slate-300">
+            <div class="text-brand-cyan">Quantum-Safe Diagnostic &amp; Verification Environment v2.4</div>
+            <div class="text-slate-400">Authenticated identity: <span class="text-white font-semibold">Krishna Saha</span> (Project Associate, IIT Bhilai)</div>
+            <div class="text-slate-400">Type <span class="text-brand-cyan font-semibold">help</span> to list available security commands or click quick actions below.</div>
+            <div class="text-brand-emerald pt-1">&#10003; PKCS#11 Hardware Security Module: CONNECTED (Slot 0x01)</div>
+            <div class="text-brand-emerald">&#10003; Post-Quantum Algorithms: ML-DSA (Dilithium-5), Falcon-1024 LOADED</div>
+            <div class="text-slate-500 border-b border-brand-border/40 pb-2">------------------------------------------------------------</div>
+            <div id="terminal-output" class="space-y-1"></div>
+          </div>
+
+          <!-- Terminal Input Row -->
+          <div class="px-4 py-3 bg-brand-surface/70 border-t border-brand-border flex items-center space-x-2">
+            <span class="text-brand-cyan font-bold font-mono">krishna@iitb:~$</span>
+            <input
+              type="text"
+              id="terminal-input"
+              class="flex-grow bg-transparent border-none outline-none text-white font-mono text-xs sm:text-sm placeholder-slate-500"
+              placeholder="try 'skills', 'projects', 'verify-pqc', 'contact', 'clear'..."
+              autocomplete="off"
+            />
+            <button id="terminal-submit-btn" class="px-3 py-1 bg-brand-cyan/20 border border-brand-cyan/40 text-brand-cyan rounded text-xs hover:bg-brand-cyan/30">
+              Run
+            </button>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="px-4 py-2.5 bg-[#080d1a] border-t border-brand-border/60 flex flex-wrap items-center gap-2 text-[11px]">
+            <span class="text-slate-500">Quick Commands:</span>
+            <button class="cmd-pill px-2 py-0.5 rounded bg-brand-surface border border-brand-border text-brand-cyan hover:border-brand-cyan">skills</button>
+            <button class="cmd-pill px-2 py-0.5 rounded bg-brand-surface border border-brand-border text-brand-cyan hover:border-brand-cyan">projects</button>
+            <button class="cmd-pill px-2 py-0.5 rounded bg-brand-surface border border-brand-border text-brand-cyan hover:border-brand-cyan">verify-pqc</button>
+            <button class="cmd-pill px-2 py-0.5 rounded bg-brand-surface border border-brand-border text-brand-cyan hover:border-brand-cyan">contact</button>
+            <button class="cmd-pill px-2 py-0.5 rounded bg-brand-surface border border-brand-border text-slate-400 hover:text-white">clear</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / FOOTER SECTION -->
+    <section id="contact" class="py-24 relative">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-surface border border-brand-border text-xs font-mono text-brand-cyan">
+          <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+          <span>06. Get in Touch</span>
+        </div>
+
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Let's Collaborate on <span class="gradient-text">Secure Systems</span>.
+        </h2>
+
+        <p class="text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+          Whether you want to discuss Post-Quantum Cryptography, AI Security auditing, local sovereign LLM architectures, or research partnerships at IIT Bhilai — my inbox is always open.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <!-- Copy Email Button -->
+          <button id="copy-email-btn" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-brand-dark font-semibold text-sm hover:opacity-95 transition-all flex items-center space-x-2 shadow-lg shadow-brand-cyan/20">
+            <i data-lucide="copy" class="w-4 h-4"></i>
+            <span id="copy-email-text">Copy Email Address</span>
+          </button>
+
+          <!-- Direct GitHub Link -->
+          <a href="https://github.com/KRISHNAITmakautwb" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-brand-surface border border-brand-border hover:border-brand-cyan text-slate-200 font-mono text-sm hover:text-brand-cyan transition-all flex items-center space-x-2">
+            <i data-lucide="github" class="w-4 h-4 text-brand-cyan"></i>
+            <span>GitHub Profile</span>
+          </a>
+        </div>
+
+        <div id="toast" class="opacity-0 transition-opacity duration-300 inline-block px-4 py-2 rounded-lg bg-brand-emerald/20 border border-brand-emerald text-brand-emerald text-xs font-mono">
+          &#10003; Email copied to clipboard! (KRISHNAITmakautwb@users.noreply.github.com)
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="border-t border-brand-border/60 bg-brand-dark py-8 text-xs font-mono text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <span class="text-brand-cyan font-bold">&lt;KS/&gt;</span>
+        <span>&copy; <span id="current-year"></span> Krishna Saha. Built for GitHub Pages.</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span>IIT Bhilai FinTeQ</span>
+        <span>&bull;</span>
+        <span>AES-GCM / PQC Ready</span>
+        <span>&bull;</span>
+        <a href="#hero" class="text-brand-cyan hover:underline">Back to top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts: Interactive Canvas + Terminal + Copy -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Set Year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Copy Email Functionality
+    const emailToCopy = "KRISHNAITmakautwb@users.noreply.github.com";
+    const copyBtn = document.getElementById('copy-email-btn');
+    const copyText = document.getElementById('copy-email-text');
+    const toast = document.getElementById('toast');
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(emailToCopy).then(() => {
+        copyText.textContent = "Copied!";
+        toast.classList.remove('opacity-0');
+        setTimeout(() => {
+          copyText.textContent = "Copy Email Address";
+          toast.classList.add('opacity-0');
+        }, 3000);
+      }).catch(() => {
+        prompt("Copy this email address:", emailToCopy);
+      });
+    });
+
+    // ----------------------------------------------------
+    // BACKGROUND CANVAS: CRYPTO & NEURAL CONSTELLATION
+    // ----------------------------------------------------
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let points = [];
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const POINT_COUNT = Math.min(50, Math.floor(window.innerWidth / 25));
+    for (let i = 0; i < POINT_COUNT; i++) {
+      points.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        size: Math.random() * 1.8 + 0.8
+      });
+    }
+
+    function animateNetwork() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw connections
+      for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+          const dx = points[i].x - points[j].x;
+          const dy = points[i].y - points[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(points[i].x, points[i].y);
+            ctx.lineTo(points[j].x, points[j].y);
+            ctx.strokeStyle = `rgba(0, 242, 254, ${0.15 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.7;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw and move points
+      for (let p of points) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = '#00f2fe';
+        ctx.shadowBlur = 4;
+        ctx.shadowColor = '#00f2fe';
+        ctx.fill();
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+      }
+
+      requestAnimationFrame(animateNetwork);
+    }
+    animateNetwork();
+
+    // ----------------------------------------------------
+    // INTERACTIVE TERMINAL
+    // ----------------------------------------------------
+    const terminalInput = document.getElementById('terminal-input');
+    const terminalOutput = document.getElementById('terminal-output');
+    const terminalBody = document.getElementById('terminal-body');
+    const terminalSubmitBtn = document.getElementById('terminal-submit-btn');
+
+    const commands = {
+      help: () => `Available commands:
+  <span class="text-brand-cyan">skills</span>     - View technical stack & languages
+  <span class="text-brand-cyan">projects</span>   - View flagship research & open-source projects
+  <span class="text-brand-cyan">verify-pqc</span> - Run simulated quantum-safe signature verification
+  <span class="text-brand-cyan">about</span>      - Quick bio and research mission
+  <span class="text-brand-cyan">affiliation</span>- Current lab and institution
+  <span class="text-brand-cyan">contact</span>    - Show contact details & email
+  <span class="text-brand-cyan">clear</span>      - Clear terminal screen`,
+
+      about: () => `Krishna Saha: AI Security & Cryptography Engineer
+Project Associate at IIT Bhilai working on the MeitY-funded FinTeQ project.
+Focusing on post-quantum crypto, local LLMs, and high-assurance security systems.`,
+
+      affiliation: () => `Institution: IIT Bhilai (Indian Institute of Technology Bhilai)
+Project: FinTeQ (Quantum-Safe Financial Transaction Framework)
+Funding Agency: Ministry of Electronics and Information Technology (MeitY), Govt. of India`,
+
+      skills: () => `[Tech Stack Matrix]
+Languages:      Python 3.11+, C, Bash, SQL, SurrealQL
+Cryptography:   PKCS#11, PKCS#7, Dilithium-5, Falcon, Kyber, PAdES, ISO 32000, AES-GCM
+AI / ML:        PyTorch, Hugging Face, LangChain, SentenceTransformers, Scikit-learn
+LLMs & Agents:  Ollama, Open WebUI, RAG Architectures, Vector Databases
+Infrastructure: FastAPI, Docker, Linux (Ubuntu/Arch), SurrealDB, PM2`,
+
+      projects: () => `[Selected Repositories & Systems]
+1. FinTeQ Framework         - Quantum-Safe Financial Framework (IIT Bhilai)
+2. Lab PDF Sentinel        - ISO 32000 & PAdES Digital Signature & Shadow Attack Sentinel
+3. MoE Extraction           - Cryptanalytic Parameter Recovery of Mixture-of-Experts Models
+4. Local NoteBookLM         - Sovereign, Private RAG & Multi-Worker Notebook Workspace
+5. Crypto TypeSafe Router   - TypeSafe Deterministic NL-to-Tool Market Dispatcher`,
+
+      'verify-pqc': () => `[PQC VERIFICATION SEQUENCE]
+[1/4] Generating ML-DSA (Dilithium-5) 256-bit entropy seed... OK
+[2/4] Signing test payload with simulated PKCS#11 hardware token (Slot #1)... OK
+[3/4] Verifying lattice-based signature matrix:
+      => Security Level: NIST Category 5 (256-bit post-quantum)
+      => Public Key Size: 2,592 bytes
+      => Signature Size: 4,595 bytes
+[4/4] Result: VALID QUANTUM-RESILIENT SIGNATURE. Byte-range hash verified.`,
+
+      contact: () => `Reach out:
+Email:  KRISHNAITmakautwb@users.noreply.github.com
+GitHub: https://github.com/KRISHNAITmakautwb
+Web:    https://krishnaitmakautwb.github.io`
+    };
+
+    function executeCommand(rawCmd) {
+      const cmd = rawCmd.trim().toLowerCase();
+      if (!cmd) return;
+
+      const cmdLine = document.createElement('div');
+      cmdLine.innerHTML = `<span class="text-brand-cyan">krishna@iitb:~$</span> <span class="text-white">${escapeHtml(rawCmd)}</span>`;
+      terminalOutput.appendChild(cmdLine);
+
+      if (cmd === 'clear') {
+        terminalOutput.innerHTML = '';
+      } else if (commands[cmd]) {
+        const resLine = document.createElement('div');
+        resLine.className = 'text-slate-300 pl-2 leading-relaxed';
+        resLine.innerHTML = commands[cmd]().replace(/\n/g, '<br/>');
+        terminalOutput.appendChild(resLine);
+      } else {
+        const errLine = document.createElement('div');
+        errLine.className = 'text-red-400 pl-2';
+        errLine.textContent = `bash: command not found: ${rawCmd}. Type 'help' for available commands.`;
+        terminalOutput.appendChild(errLine);
+      }
+
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+      terminalInput.value = '';
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    terminalInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        executeCommand(terminalInput.value);
+      }
+    });
+
+    terminalSubmitBtn.addEventListener('click', () => {
+      executeCommand(terminalInput.value);
+    });
+
+    document.querySelectorAll('.cmd-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        executeCommand(btn.textContent.trim());
+      });
+    });
+  </script>
+</body>
+</html>
