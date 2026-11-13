@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrusMeet Portal | de.ci.phe.red LAB - IIT Bhilai</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: rgba(16, 24, 40, 0.75);
+      --bg-card-hover: rgba(22, 33, 56, 0.85);
+      --border-color: rgba(56, 189, 248, 0.18);
+      --border-glow: rgba(56, 189, 248, 0.4);
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --accent-cyan: #38bdf8;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(2, 132, 199, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 45%);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 3rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0369a1, #0f172a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    }
+
+    .brand-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #fff, var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-cyan);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--accent-cyan);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Grid Layout */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+    }
+
+    /* Glass Cards */
+    .card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Launcher Controls */
+    .input-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .input-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .custom-input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .custom-input:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+    }
+
+    .preset-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .pill-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pill-btn:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .btn-launch {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--primary), #0284c7);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35);
+      margin-top: 1rem;
+      text-decoration: none;
+    }
+
+    .btn-launch:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+      background: linear-gradient(135deg, #0369a1, #0284c7);
+    }
+
+    /* Secret Code Banner */
+    .secret-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .secret-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .secret-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-amber);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .secret-code-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .secret-code-display {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.1em;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+      border: 1px dashed rgba(245, 158, 11, 0.4);
+    }
+
+    .btn-copy {
+      padding: 0.5rem 0.85rem;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--accent-amber);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-copy:hover {
+      background: rgba(245, 158, 11, 0.25);
+    }
+
+    /* Steps list */
+    .steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-text h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .step-text p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Manuals Section */
+    .manuals-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-heading {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .manuals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .manual-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+
+    .manual-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-glow);
+      background: var(--bg-card-hover);
+    }
+
+    .manual-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-cyan);
+      margin-bottom: 0.5rem;
+    }
+
+    .manual-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .manual-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-download:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* Security Specs Badges */
+    .specs-strip {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .spec-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .spec-icon {
+      font-size: 1.5rem;
+    }
+
+    .spec-label {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .spec-val {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 2rem;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    footer a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="brand-logo">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">TrusMeet Portal</div>
+          <div class="brand-subtitle">de.ci.phe.red LAB $\cdot$ Department of CSE $\cdot$ IIT Bhilai</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="https://krishnaitmakautwb.github.io/">$\leftarrow$ Back to Portfolio</a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Zero-Trust Hardware WebRTC Conference
+      </div>
+      <h1>High-Assurance Video Conferencing for Research Labs</h1>
+      <p>
+        Integrated with indigenous <strong>C-DAC TrusToken</strong> USB cryptographic hardware (BIS IS-16695 / PKCS#11).
+        Enforces passwordless two-factor entry, continuous presence heartbeat, and cryptographic meeting minutes signing.
+      </p>
+    </section>
+
+    <!-- Main Grid -->
+    <div class="portal-grid">
+      <!-- Left: Launcher Card -->
+      <div class="card">
+        <div class="card-title">
+          <span>🚀</span>
+          <span>Join Conference Room</span>
+        </div>
+        <p class="card-desc">
+          Off-campus lab members, scholars, and collaborators can connect directly to the active meeting server below.
+        </p>
+
+        <div class="input-group">
+          <label class="input-label" for="server-url">Meeting Server Endpoint (HTTPS / Tunnel)</label>
+          <input type="text" id="server-url" class="custom-input" value="https://dial-coordinated-alberta-earnings.trycloudflare.com" placeholder="https://<tunnel>.trycloudflare.com">
+          
+          <div class="preset-pills">
+            <button type="button" class="pill-btn" onclick="setPreset('https://dial-coordinated-alberta-earnings.trycloudflare.com')">Cloudflare Edge Tunnel</button>
+            <button type="button" class="pill-btn" onclick="setPreset('https://10.50.34.5:8443')">Campus LAN (10.50.34.5)</button>
+            <button type="button" class="pill-btn" onclick="setPreset('https://localhost:8443')">Localhost (8443)</button>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="room-id">Conference Room Code</label>
+          <input type="text" id="room-id" class="custom-input" value="LAB-DECIPHERED-SYNC" placeholder="Room ID">
+        </div>
+
+        <a id="launch-btn" href="#" target="_blank" class="btn-launch" onclick="launchMeeting(event)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+            <polyline points="10 17 15 12 10 7"></polyline>
+            <line x1="15" y1="12" x2="3" y2="12"></line>
+          </svg>
+          <span>Launch TrusMeet Room</span>
+        </a>
+      </div>
+
+      <!-- Right: Access Credentials & Onboarding -->
+      <div class="card">
+        <div class="card-title">
+          <span>🔐</span>
+          <span>Lab Scholar Access Gate</span>
+        </div>
+        <p class="card-desc">
+          Authorized lab members require the private registration code to enroll on the server.
+        </p>
+
+        <div class="secret-box">
+          <div class="secret-header">
+            <div class="secret-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Secret Lab Sign-Up Code</span>
+            </div>
+            <button class="btn-copy" id="copy-btn" onclick="copyCode()">Copy Code</button>
+          </div>
+          <div class="secret-code-row">
+            <div class="secret-code-display" id="secret-code">710b45f5787e</div>
+          </div>
+        </div>
+
+        <ul class="steps-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <h4>Launch the Meeting Endpoint</h4>
+              <p>Click "Launch TrusMeet Room" to open the secure WebRTC interface in a new browser tab.</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <h4>Create Profile or Log In</h4>
+              <p>Click "Create Profile", enter your name, username, password, and paste the code <code>710b45f5787e</code>.</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <h4>Hardware Authentication</h4>
+              <p>Insert your C-DAC TrusToken USB key (solid red LED = ready) or use your verified scholar profile.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Security Specs Badges -->
+    <div class="specs-strip">
+      <div class="spec-item">
+        <div class="spec-icon">🛡️</div>
+        <div>
+          <div class="spec-label">Security Standard</div>
+          <div class="spec-val">BIS IS-16695 (Part 1 & 2)</div>
+        </div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">🔑</div>
+        <div>
+          <div class="spec-label">Hardware Cryptoki</div>
+          <div class="spec-val">PKCS#11 v2.20 / ISO-7816</div>
+        </div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">📜</div>
+        <div>
+          <div class="spec-label">Minutes Signatures</div>
+          <div class="spec-val">ISO 32000-1 / RFC 5652 CMS</div>
+        </div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">💓</div>
+        <div>
+          <div class="spec-label">Presence Verification</div>
+          <div class="spec-val">12s Hardware Heartbeat</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manuals Section -->
+    <section class="manuals-section">
+      <h2 class="section-heading">Official Documentation & User Manuals</h2>
+      <p class="section-subtitle">Complete operational guides compiled for the research laboratory</p>
+
+      <div class="manuals-grid">
+        <!-- Manual 1 -->
+        <div class="manual-card">
+          <div>
+            <div class="manual-tag">Administrator & Host</div>
+            <h3 class="manual-title">PI & Administrator Operations Manual</h3>
+            <p class="manual-desc">
+              Comprehensive guide covering system architecture, PKCS#11 driver integration, 
+              PC/SC daemon orchestration, zero-trust host moderation, and the cryptographic PDF signing protocol.
+            </p>
+          </div>
+          <a href="manuals/admin_pi_manual.pdf" class="btn-download" download>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download PDF Manual (12 Pages)</span>
+          </a>
+        </div>
+
+        <!-- Manual 2 -->
+        <div class="manual-card">
+          <div>
+            <div class="manual-tag">Scholars & Attendees</div>
+            <h3 class="manual-title">Lab Member & Scholar User Manual</h3>
+            <p class="manual-desc">
+              Step-by-step practical guide for PhD scholars, researchers, and attendees. 
+              Details account registration, USB token standby LED states, meeting AV controls, and reviewing signed minutes.
+            </p>
+          </div>
+          <a href="manuals/lab_member_manual.pdf" class="btn-download" download>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download PDF Manual (11 Pages)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        <strong>TrusMeet Video Conference Platform</strong> $\cdot$ 
+        <strong>de.ci.phe.red LAB</strong> (Cryptography & Information Security)<br>
+        Department of Computer Science and Engineering, Indian Institute of Technology Bhilai (IIT Bhilai)<br>
+        Principal Investigator: <strong>Dr. Dhiman Saha</strong> $\cdot$ Prepared by: <strong>Krishna Saha (AI Security)</strong>
+      </p>
+      <p style="margin-top: 0.75rem;">
+        Hardware Partner: <strong>C-DAC Noida & IIT Bhilai</strong> $\cdot$ 
+        <a href="https://krishnaitmakautwb.github.io/">krishnaitmakautwb.github.io</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    function setPreset(url) {
+      document.getElementById('server-url').value = url;
+    }
+
+    function launchMeeting(e) {
+      e.preventDefault();
+      let server = document.getElementById('server-url').value.trim();
+      const room = document.getElementById('room-id').value.trim();
+
+      if (!server) {
+        alert('Please enter a server endpoint URL.');
+        return;
+      }
+
+      if (!server.startsWith('http://') && !server.startsWith('https://')) {
+        server = 'https://' + server;
+      }
+
+      // Strip trailing slash
+      if (server.endsWith('/')) {
+        server = server.slice(0, -1);
+      }
+
+      const targetUrl = room ? `${server}/?room=${encodeURIComponent(room)}` : server;
+      window.open(targetUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    function copyCode() {
+      const code = document.getElementById('secret-code').innerText.trim();
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.innerText = 'Copied!';
+        btn.style.background = 'rgba(16, 185, 129, 0.25)';
+        btn.style.color = '#10b981';
+        btn.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+        setTimeout(() => {
+          btn.innerText = 'Copy Code';
+          btn.style.background = 'rgba(245, 158, 11, 0.15)';
+          btn.style.color = '#f59e0b';
+          btn.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
