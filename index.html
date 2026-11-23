@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Krishna Saha · Cryptography &amp; AI Security, IIT Bhilai</title>
-  <meta name="description" content="Krishna Saha, Project Associate at IIT Bhilai: post-quantum cryptography, digital-signature assurance, AI model security and lab instrumentation. Projects, research areas and contact." />
+  <meta name="description" content="Krishna Saha, Project Associate at IIT Bhilai: digital-signature assurance, AI model security and experimental quantum communication. Projects, research areas and contact." />
   <meta name="author" content="Krishna Saha" />
   <link rel="canonical" href="https://krishnaitmakautwb.github.io/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Krishna Saha · Cryptography & AI Security" />
-  <meta property="og:description" content="Post-quantum cryptography, signature assurance, AI model security and lab instrumentation at IIT Bhilai." />
+  <meta property="og:description" content="Signature assurance, AI model security and experimental quantum communication at IIT Bhilai." />
   <meta property="og:url" content="https://krishnaitmakautwb.github.io/" />
   <link rel="icon" href="./trusmeet/assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -135,16 +135,19 @@
     .btn.primary:hover { filter: brightness(1.08); }
     .btn svg { width: 18px; height: 18px; }
 
-    /* lattice motif: points of a 2-D lattice, its basis, and the closest point to a moving target */
-    .lattice-card { margin: 0; background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(6px); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px; }
-    .lattice-card svg { width: 100%; height: auto; display: block; touch-action: none; }
-    .lattice-card .cap { font: 12px var(--mono); color: var(--text-3); margin-top: 10px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-    .lp { fill: var(--text-3); opacity: .35; transition: opacity .3s; }
-    .lp.hot { fill: var(--accent); opacity: 1; }
-    .basis { stroke: var(--accent); stroke-width: 2.2; marker-end: url(#arrow); }
-    .basis.b2 { stroke: var(--amber); marker-end: url(#arrow2); }
-    .target { fill: var(--amber); }
-    .closest { stroke: var(--text-3); stroke-dasharray: 4 4; stroke-width: 1.4; }
+    /* hero visual: two-photon polarization correlation, C(θ) ∝ 1 + V cos 2θ */
+    .viz-card { margin: 0; background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(6px); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px; }
+    .viz-card svg { width: 100%; height: auto; display: block; touch-action: none; cursor: crosshair; }
+    .viz-card .cap { font: 12px var(--mono); color: var(--text-3); margin-top: 10px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .ax { stroke: var(--line); stroke-width: 1; }
+    .tk { font: 10px var(--mono); fill: var(--text-3); }
+    .curve { fill: none; stroke: var(--accent); stroke-width: 2.4; }
+    .area-fill { fill: var(--accent); opacity: .08; }
+    .cursor { stroke: var(--amber); stroke-width: 1.4; stroke-dasharray: 4 4; }
+    .dot { fill: var(--amber); stroke: var(--surface); stroke-width: 2; }
+    .read { font: 600 12px var(--mono); fill: var(--text); }
+    .pol { stroke: var(--amber); stroke-width: 3; stroke-linecap: round; }
+    .pol-ring { fill: none; stroke: var(--line); stroke-width: 1.5; }
 
     /* ---------- at a glance ---------- */
     .glance-band { background: var(--surface); border-bottom: 1px solid var(--line); }
@@ -186,8 +189,10 @@
     .now li span { color: var(--text-2); font-size: 14px; }
 
     /* research areas */
-    .areas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    @media (max-width: 900px) { .areas { grid-template-columns: 1fr 1fr; } }
+    .areas { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+    .areas > .area { grid-column: span 2; }
+    .areas > .area:nth-child(n+4) { grid-column: span 3; }   /* five cards: 3 on top, 2 wider below */
+    @media (max-width: 900px) { .areas { grid-template-columns: 1fr 1fr; } .areas > .area, .areas > .area:nth-child(n+4) { grid-column: auto; } .areas > .area:last-child { grid-column: 1 / -1; } }
     @media (max-width: 600px) { .areas { grid-template-columns: 1fr; } }
     .area { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
     .area .ico { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; margin-bottom: 14px; }
@@ -307,7 +312,7 @@
           <span class="eyebrow"><span class="dot"></span>Project Associate · IIT Bhilai</span>
           <h1>Krishna Saha</h1>
           <p class="role">I build and break <strong class="grad">cryptographic systems</strong> and <strong class="grad">AI models</strong>.</p>
-          <p class="lead">I work on the MeitY-funded <strong>FinTeQ</strong> quantum-safe financial framework at IIT Bhilai. My work spans post-quantum signatures and hardware tokens, PDF signature assurance, attacks that extract the parameters of neural networks, and software for the lab's quantum-optics experiments.</p>
+          <p class="lead">I work on the MeitY-funded <strong>FinTeQ</strong> financial-security framework at IIT Bhilai. My work spans digital signatures and hardware tokens, PDF signature assurance, attacks that extract the parameters of neural networks, and quantum-optics experiments: a <strong>B92 key-distribution</strong> demonstration and an <strong>entangled photon source</strong>.</p>
           <div class="cta">
             <a class="btn primary" href="#projects">See my projects</a>
             <a class="btn" href="https://github.com/KRISHNAITmakautwb" target="_blank" rel="noopener">
@@ -318,25 +323,26 @@
           </div>
           <div class="stats" aria-label="At a glance">
             <div><b id="n-projects">9</b><span>projects</span></div>
-            <div><b>6</b><span>research areas</span></div>
+            <div><b>5</b><span>research areas</span></div>
             <div><b>2</b><span>live tools</span></div>
             <div><b>5</b><span>open-source repos</span></div>
           </div>
         </div>
 
-        <figure class="lattice-card">
-          <svg id="lattice" viewBox="0 0 360 260" role="img" aria-label="A two-dimensional lattice: two basis vectors and the lattice point closest to a moving target">
-            <defs>
-              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--accent)"/></marker>
-              <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--amber)"/></marker>
-            </defs>
-            <g id="lattice-points"></g>
-            <line id="closest" class="closest" />
-            <line id="b1" class="basis" />
-            <line id="b2" class="basis b2" />
-            <circle id="target" class="target" r="5" />
+        <figure class="viz-card">
+          <svg id="corr" viewBox="0 0 360 260" role="img" aria-label="Coincidence counts against polarizer angle: a cos-squared curve with visibility 0.97. Moving the pointer sets the angle.">
+            <path id="corr-fill" class="area-fill" />
+            <line class="ax" x1="40" y1="210" x2="340" y2="210" />
+            <line class="ax" x1="40" y1="66" x2="40" y2="210" />
+            <g id="corr-ticks"></g>
+            <path id="corr-curve" class="curve" />
+            <line id="corr-cursor" class="cursor" y1="66" y2="210" />
+            <circle id="corr-dot" class="dot" r="6" />
+            <circle class="pol-ring" cx="318" cy="30" r="17" />
+            <line id="corr-pol" class="pol" />
+            <text id="corr-read" class="read" x="40" y="34"></text>
           </svg>
-          <figcaption class="cap"><span>A lattice: the maths behind post-quantum crypto</span><span>Move your pointer over it</span></figcaption>
+          <figcaption class="cap"><span>Entangled photons: coincidences vs polarizer angle</span><span>Move your pointer over it</span></figcaption>
         </figure>
       </div>
     </section>
@@ -347,7 +353,7 @@
         <div><dt>Role</dt><dd>Project Associate</dd></div>
         <div><dt>Institution</dt><dd>IIT Bhilai, India</dd></div>
         <div><dt>Main project</dt><dd>FinTeQ (funded by MeitY)</dd></div>
-        <div><dt>Focus</dt><dd>Applied cryptography · AI security</dd></div>
+        <div><dt>Focus</dt><dd>AI security · Signatures · Quantum optics</dd></div>
       </dl>
     </div>
 
@@ -357,8 +363,8 @@
         <div>
           <p class="kicker">About</p>
           <h2>Security you can verify</h2>
-          <p style="margin-top:18px">I'm an AI-security and cryptography engineer at the <strong>de.ci.phe.red Lab, IIT Bhilai</strong>. My research sits in the <strong>FinTeQ</strong> initiative, funded by the Ministry of Electronics &amp; Information Technology (MeitY), Govt. of India, which prepares financial systems for the arrival of quantum computers.</p>
-          <p>On the cryptography side I work with <strong>NIST post-quantum standards</strong> (ML-DSA / Dilithium, Falcon, ML-KEM / Kyber), hardware tokens through <strong>PKCS#11</strong>, and <strong>PDF signatures</strong> under ISO 32000 and PAdES.</p>
+          <p style="margin-top:18px">I'm an AI-security and cryptography engineer at the <strong>de.ci.phe.red Lab, IIT Bhilai</strong>. I work in the <strong>FinTeQ</strong> initiative, funded by the Ministry of Electronics &amp; Information Technology (MeitY), Govt. of India, which builds trustworthy security for financial systems.</p>
+          <p>On the cryptography side I work with <strong>hardware tokens</strong> through PKCS#11, <strong>digital signatures</strong> (CMS / PKCS#7, X.509) and <strong>PDF signatures</strong> under ISO 32000 and PAdES. In the optics lab I run a <strong>B92 QKD</strong> demonstration and characterise an <strong>entangled photon source</strong>.</p>
           <p>On the AI side I study how much of a model an attacker can recover just by querying it, from <strong>Mixture-of-Experts</strong> gating to the weights of ordinary neural networks. I also build <strong>local, air-gapped AI tools</strong> that keep confidential data off the cloud.</p>
         </div>
         <aside class="now" aria-labelledby="now-h">
@@ -380,16 +386,10 @@
           <div>
             <p class="kicker">Research</p>
             <h2>What I work on</h2>
-            <p class="sub">Six areas, from the mathematics of quantum-safe signatures to the hardware and software that use them.</p>
+            <p class="sub">Five areas, from signature assurance and AI model security to experimental quantum communication.</p>
           </div>
         </div>
         <div class="areas">
-          <article class="area">
-            <div class="ico c-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-            <h3>Post-quantum cryptography</h3>
-            <p>Lattice-based NIST standards that keep transactions safe even against future quantum computers.</p>
-            <div class="chips"><span class="chip">ML-DSA</span><span class="chip">Falcon</span><span class="chip">ML-KEM</span><span class="chip">FIPS 203/204</span></div>
-          </article>
           <article class="area">
             <div class="ico c-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m9 15 2 2 4-4"/></svg></div>
             <h3>Digital-signature assurance</h3>
@@ -443,10 +443,10 @@
 
         <div class="projects" id="project-grid">
           <article class="proj featured" data-cat="crypto">
-            <div class="meta"><span class="area-tag" style="color:var(--accent)">Post-quantum · MeitY · main project</span><span class="status s-research">Research project</span></div>
-            <h3>FinTeQ: quantum-safe financial framework</h3>
-            <p>The national research framework I work on at IIT Bhilai. It moves banking transactions to post-quantum security, combining lattice-based authentication, PKCS#11 smartcards and tamper-resistant transaction checks.</p>
-            <div class="foot"><span class="stack">PQC · PKCS#11 · Smartcards</span><span class="acts"><span class="muted">IIT Bhilai · MeitY</span></span></div>
+            <div class="meta"><span class="area-tag" style="color:var(--accent)">Financial security · MeitY · main project</span><span class="status s-research">Research project</span></div>
+            <h3>FinTeQ: secure financial framework</h3>
+            <p>The national research framework I work on at IIT Bhilai. It secures banking transactions with hardware-backed digital signatures, combining PKCS#11 smartcards and USB tokens with tamper-resistant transaction checks.</p>
+            <div class="foot"><span class="stack">PKCS#11 · Smartcards · Signatures</span><span class="acts"><span class="muted">IIT Bhilai · MeitY</span></span></div>
           </article>
 
           <article class="proj" data-cat="crypto">
@@ -536,7 +536,7 @@
         <div class="sec-head"><div><p class="kicker">Skills</p><h2>Tools I use</h2></div></div>
         <div class="skills">
           <div><h3>Languages</h3><div class="chips"><span class="chip">Python</span><span class="chip">C</span><span class="chip">Bash</span><span class="chip">SQL</span><span class="chip">SurrealQL</span><span class="chip">JavaScript</span></div></div>
-          <div><h3>Security &amp; crypto</h3><div class="chips"><span class="chip">NIST PQC</span><span class="chip">PKCS#11</span><span class="chip">PKCS#7</span><span class="chip">ISO 32000-2</span><span class="chip">PAdES</span><span class="chip">X.509</span></div></div>
+          <div><h3>Security &amp; crypto</h3><div class="chips"><span class="chip">QKD (B92)</span><span class="chip">PKCS#11</span><span class="chip">PKCS#7</span><span class="chip">ISO 32000-2</span><span class="chip">PAdES</span><span class="chip">X.509</span></div></div>
           <div><h3>AI &amp; ML</h3><div class="chips"><span class="chip">PyTorch</span><span class="chip">Hugging Face</span><span class="chip">LangChain</span><span class="chip">Ollama</span><span class="chip">RAG</span></div></div>
           <div><h3>Systems &amp; hardware</h3><div class="chips"><span class="chip">Linux</span><span class="chip">Docker</span><span class="chip">FastAPI</span><span class="chip">WebRTC</span><span class="chip">PyQt6</span><span class="chip">FPGA / serial</span></div></div>
         </div>
@@ -548,7 +548,7 @@
       <div class="wrap contact">
         <p class="kicker">Contact</p>
         <h2>Let's work together</h2>
-        <p>I'm open to research collaborations in post-quantum cryptography, AI-security auditing, local LLMs and digital-signature systems.</p>
+        <p>I'm open to research collaborations in AI-security auditing, quantum communication, local LLMs and digital-signature systems.</p>
         <div class="cta">
           <a class="btn primary js-mail" href="#contact" data-u="krishnasaha" data-d="myyahoo.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
@@ -634,40 +634,43 @@
       });
     })();
 
-    // ---- lattice motif: a skewed 2-D lattice; the closest point to a moving target lights up ----
+    // ---- polarization correlation: ideal curve C(θ) = (1 + V cos 2θ) / 2, V = 0.97 ----
     (function () {
-      var svg = document.getElementById("lattice"), g = document.getElementById("lattice-points");
-      var NS = "http://www.w3.org/2000/svg", W = 360, H = 260, ox = 120, oy = 150;
-      var b1 = [46, -10], b2 = [16, -38];               // basis vectors (screen units)
-      var pts = [];
-      for (var i = -8; i <= 8; i++) for (var j = -6; j <= 6; j++) {
-        var x = ox + i * b1[0] + j * b2[0], y = oy + i * b1[1] + j * b2[1];
-        if (x < 10 || x > W - 10 || y < 10 || y > H - 10) continue;
-        var c = document.createElementNS(NS, "circle");
-        c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", 3.2); c.setAttribute("class", "lp");
-        g.appendChild(c); pts.push({ x: x, y: y, el: c });
+      var svg = document.getElementById("corr"), NS = "http://www.w3.org/2000/svg";
+      var X0 = 40, X1 = 340, Y0 = 210, Y1 = 66, V = 0.97;
+      function px(deg) { return X0 + (X1 - X0) * deg / 360; }
+      function c(deg) { return (1 + V * Math.cos(2 * deg * Math.PI / 180)) / 2; }
+      function py(v) { return Y0 - (Y0 - Y1 - 20) * v - 10; }
+      var d = "";
+      for (var a = 0; a <= 360; a += 2) d += (a ? "L" : "M") + px(a).toFixed(1) + " " + py(c(a)).toFixed(1);
+      document.getElementById("corr-curve").setAttribute("d", d);
+      document.getElementById("corr-fill").setAttribute("d", d + "L" + X1 + " " + Y0 + "L" + X0 + " " + Y0 + "Z");
+      var ticks = document.getElementById("corr-ticks");
+      [0, 90, 180, 270, 360].forEach(function (t) {
+        var tx = document.createElementNS(NS, "text");
+        tx.setAttribute("x", px(t)); tx.setAttribute("y", Y0 + 16); tx.setAttribute("text-anchor", "middle");
+        tx.setAttribute("class", "tk"); tx.textContent = t + "°"; ticks.appendChild(tx);
+      });
+      var cur = document.getElementById("corr-cursor"), dot = document.getElementById("corr-dot"),
+          pol = document.getElementById("corr-pol"), read = document.getElementById("corr-read");
+      function place(deg) {
+        deg = Math.max(0, Math.min(360, deg));
+        var x = px(deg), y = py(c(deg)), r = deg * Math.PI / 180;
+        cur.setAttribute("x1", x); cur.setAttribute("x2", x);
+        dot.setAttribute("cx", x); dot.setAttribute("cy", y);
+        pol.setAttribute("x1", 318 - 15 * Math.cos(r)); pol.setAttribute("y1", 30 + 15 * Math.sin(r));
+        pol.setAttribute("x2", 318 + 15 * Math.cos(r)); pol.setAttribute("y2", 30 - 15 * Math.sin(r));
+        read.textContent = "θ = " + Math.round(deg) + "°   coincidences " + Math.round(100 * c(deg)) + "%";
       }
-      function line(id, x1, y1, x2, y2) { var l = document.getElementById(id); l.setAttribute("x1", x1); l.setAttribute("y1", y1); l.setAttribute("x2", x2); l.setAttribute("y2", y2); }
-      line("b1", ox, oy, ox + b1[0], oy + b1[1]);
-      line("b2", ox, oy, ox + b2[0], oy + b2[1]);
-      var hot = null, t = document.getElementById("target");
-      function place(x, y) {
-        t.setAttribute("cx", x); t.setAttribute("cy", y);
-        var best = pts[0], bd = Infinity;
-        pts.forEach(function (p) { var d = (p.x - x) * (p.x - x) + (p.y - y) * (p.y - y); if (d < bd) { bd = d; best = p; } });
-        if (hot) { hot.el.classList.remove("hot"); hot.el.setAttribute("r", 3.2); }
-        best.el.classList.add("hot"); best.el.setAttribute("r", 5.5); hot = best;
-        line("closest", x, y, best.x, best.y);
-      }
-      var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches, manual = false, a = 0;
+      var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches, manual = false, t = 0;
       svg.addEventListener("pointermove", function (e) {
-        var r = svg.getBoundingClientRect(); manual = true;
-        place((e.clientX - r.left) * W / r.width, (e.clientY - r.top) * H / r.height);
+        var b = svg.getBoundingClientRect(); manual = true;
+        place(((e.clientX - b.left) * 360 / b.width - X0) * 360 / (X1 - X0));
       });
       svg.addEventListener("pointerleave", function () { manual = false; });
-      place(250, 90);
+      place(30);
       if (!reduce) (function tick() {
-        if (!manual) { a += 0.006; place(200 + 110 * Math.cos(a), 130 + 70 * Math.sin(1.7 * a)); }
+        if (!manual) { t += 0.004; place(180 + 180 * Math.sin(t)); }
         requestAnimationFrame(tick);
       })();
     })();
