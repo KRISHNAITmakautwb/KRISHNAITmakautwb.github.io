@@ -218,6 +218,7 @@
     .proj:hover, .area:hover, .tool:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); box-shadow: var(--shadow); }
     .proj[hidden] { display: none; }
     .proj.featured { grid-column: 1 / -1; border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+    .projects > .proj:last-child:nth-child(even) { grid-column: 1 / -1; }   /* odd number after the featured card: last one fills the row */
     .proj .meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
     .area-tag { font: 500 12px var(--mono); }
     .status { font: 600 12px var(--sans); padding: 3px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
@@ -329,10 +330,10 @@
             <a class="btn js-mail" href="#contact" data-u="krishnasaha" data-d="myyahoo.com">Get in touch</a>
           </div>
           <div class="stats" aria-label="At a glance">
-            <div><b id="n-projects">9</b><span>projects</span></div>
+            <div><b id="n-projects">10</b><span>projects</span></div>
             <div><b>5</b><span>research areas</span></div>
             <div><b>2</b><span>live tools</span></div>
-            <div><b>5</b><span>open-source repos</span></div>
+            <div><b>6</b><span>open-source repos</span></div>
           </div>
         </div>
 
@@ -482,6 +483,13 @@
             <h3>Local NotebookLM</h3>
             <p>A private NotebookLM-style research workspace for the de.ci.phe.red Lab that runs entirely on local machines, with SurrealDB storage, background workers, a FastAPI backend and a Next.js 15 interface.</p>
             <div class="foot"><span class="stack">SurrealDB · FastAPI · Next.js</span><span class="acts"><a href="https://github.com/KRISHNAITmakautwb/local-notebooklm" target="_blank" rel="noopener">Code ↗</a></span></div>
+          </article>
+
+          <article class="proj" data-cat="ai">
+            <div class="meta"><span class="area-tag" style="color:var(--accent)">LLM inference</span><span class="status s-open">Open source</span></div>
+            <h3>RIC: Router → Inference → Cache</h3>
+            <p>An LLM gateway that sends each query to the cheapest model that can answer it. Short or simple questions go to a local Gemma model on Ollama, demanding ones go to a cloud model through OmniRoute, and repeated questions are answered from a SQLite cache. It includes a FastAPI server and a benchmark comparing local, cloud and routed modes.</p>
+            <div class="foot"><span class="stack">FastAPI · Ollama · SQLite</span><span class="acts"><a href="https://github.com/KRISHNAITmakautwb/ric_inferences" target="_blank" rel="noopener">Code ↗</a></span></div>
           </article>
 
           <article class="proj" data-cat="ai">
