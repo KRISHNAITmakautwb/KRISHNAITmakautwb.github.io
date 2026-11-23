@@ -218,7 +218,15 @@
     .proj:hover, .area:hover, .tool:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); box-shadow: var(--shadow); }
     .proj[hidden] { display: none; }
     .proj.featured { grid-column: 1 / -1; border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
-    .projects > .proj:last-child:nth-child(even) { grid-column: 1 / -1; }   /* odd number after the featured card: last one fills the row */
+    .proj.wide-last { grid-column: 1 / -1; }   /* set by JS: an odd card left over fills the row */
+    .proj.spotlight { display: grid; grid-template-columns: 1.1fr 1fr; gap: 26px; align-items: center; }
+    .proj.spotlight .txt { display: flex; flex-direction: column; gap: 12px; height: 100%; }
+    .proj.spotlight ul { margin: 0; padding-left: 18px; color: var(--text-2); font-size: 14.5px; }
+    .proj.spotlight li { margin: 3px 0; }
+    .term { margin: 0; background: #0b1220; color: #cbd5e1; border-radius: 10px; padding: 14px 16px; font: 12.5px/1.6 var(--mono); overflow-x: auto; box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); white-space: pre; }
+    .term .dots { color: #475569; letter-spacing: 3px; margin-right: 10px; }
+    .term .t-p { color: #5eead4; } .term .t-ai { color: #e2e8f0; } .term .t-tool { color: #fbbf24; } .term .t-ask { color: #f87171; font-weight: 600; } .term .t-ok { color: #86efac; } .term .t-dim { color: #64748b; }
+    @media (max-width: 900px) { .proj.spotlight { grid-template-columns: 1fr; } }
     .proj .meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
     .area-tag { font: 500 12px var(--mono); }
     .status { font: 600 12px var(--sans); padding: 3px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
@@ -330,10 +338,10 @@
             <a class="btn js-mail" href="#contact" data-u="krishnasaha" data-d="myyahoo.com">Get in touch</a>
           </div>
           <div class="stats" aria-label="At a glance">
-            <div><b id="n-projects">10</b><span>projects</span></div>
+            <div><b id="n-projects">11</b><span>projects</span></div>
             <div><b>5</b><span>research areas</span></div>
             <div><b>2</b><span>live tools</span></div>
-            <div><b>6</b><span>open-source repos</span></div>
+            <div><b>7</b><span>open-source repos</span></div>
           </div>
         </div>
 
@@ -380,6 +388,7 @@
           <ul>
             <li><div><b>Neural-network extraction</b><span>Recovering a model's weights through adaptive queries, treating it like a cryptographic oracle.</span></div></li>
             <li><div><b>TrusMeet</b><span>Lab video meetings unlocked by a C-DAC TrusToken USB key, with signed meeting minutes.</span></div></li>
+            <li><div><b>cryptos AI command line</b><span>A lab-wide AI agent in the terminal, powered by the lab's own GPU workstation.</span></div></li>
             <li><div><b>B92 QKD demonstration</b><span>A working B92 quantum key distribution setup, with time-tagged photon detection and QBER analysis.</span></div></li>
             <li><div><b>Entangled photon source</b><span>Building the EPS hardware setup and measuring its polarization visibility.</span></div></li>
           </ul>
@@ -455,6 +464,30 @@
             <h3>FinTeQ: secure financial framework</h3>
             <p>The national research framework I work on at IIT Bhilai. It secures banking transactions with hardware-backed digital signatures, combining PKCS#11 smartcards and USB tokens with tamper-resistant transaction checks.</p>
             <div class="foot"><span class="stack">PKCS#11 · Smartcards · Signatures</span><span class="acts"><span class="muted">IIT Bhilai · MeitY</span></span></div>
+          </article>
+
+          <article class="proj featured spotlight" data-cat="ai">
+            <div class="txt">
+              <div class="meta"><span class="area-tag" style="color:var(--violet)">AI agent · Lab infrastructure</span><span class="status s-open">Open source</span></div>
+              <h3>cryptos: the lab's own AI command line</h3>
+              <p>One command, <code>cryptos</code>, gives every member of the de.ci.phe.red Lab a coding and research AI agent in their terminal, without a GPU on their own machine. The models (Qwen, Llama, DeepSeek, Gemma) run once on the lab's workstation through Ollama and stream to every laptop on the lab network.</p>
+              <ul>
+                <li><b>Agent tools:</b> it can run shell commands, read and write files, and search the web.</li>
+                <li><b>Human in the loop:</b> every tool call stops and asks the user to allow it first.</li>
+                <li><b>Any model:</b> new models on the server appear for everyone; models without tool support fall back to plain chat.</li>
+                <li><b>Self-updating:</b> <code>cryptos update</code> pulls the newest version from the lab server.</li>
+              </ul>
+              <div class="foot"><span class="stack">Python · Ollama · rich · Tool calling</span><span class="acts"><a href="https://github.com/KRISHNAITmakautwb/lab-ai-cli" target="_blank" rel="noopener">Code ↗</a></span></div>
+            </div>
+            <pre class="term" aria-label="Example cryptos session"><span class="dots">● ● ●</span><span class="t-dim">example session</span>
+<span class="t-p">you ›</span> <span class="t-ai">how much disk space is left?</span>
+<span class="t-tool">⚙ execute_command</span>  <span class="t-dim">df -h /</span>
+<span class="t-ask">Allow this command? [Enter = Yes / a = All / n = No]</span>
+<span class="t-ok">✓ ran</span>  <span class="t-dim">/dev/nvme0n1p2  468G  301G  144G  68% /</span>
+<span class="t-p">cryptos ›</span> <span class="t-ai">About 144 GB is free (68% used).</span>
+
+<span class="t-p">you ›</span> <span class="t-ai">/model</span>
+<span class="t-dim">1. qwen3.5  2. llama3  3. deepseek  4. gemma</span></pre>
           </article>
 
           <article class="proj" data-cat="crypto">
@@ -646,8 +679,15 @@
           var f = b.dataset.filter;
           buttons.forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
           cards.forEach(function (c) { c.hidden = !(f === "all" || c.dataset.cat === f); });
+          balance();
         });
       });
+      function balance() {
+        var vis = Array.prototype.filter.call(cards, function (c) { return !c.hidden && !c.classList.contains("featured"); });
+        cards.forEach(function (c) { c.classList.remove("wide-last"); });
+        if (vis.length % 2) vis[vis.length - 1].classList.add("wide-last");
+      }
+      balance();
     })();
 
     // ---- polarization correlation: ideal curve C(θ) = (1 + V cos 2θ) / 2, V = 0.97 ----
