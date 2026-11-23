@@ -167,6 +167,12 @@
     .edu-proj .lbl { font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); }
     .edu-proj p { margin: 6px 0 0; font-size: 14.5px; color: var(--text-2); }
     .edu-proj b { color: var(--text); }
+    .edu-item.work .edu-card::before { background: var(--amber); box-shadow: 0 0 0 4px var(--amber-soft); }
+    .kind { font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--amber); }
+    .edu-item.study .kind { color: var(--accent); }
+    .edu-card ul { margin: 12px 0 0; padding-left: 18px; color: var(--text-2); font-size: 14.5px; }
+    .edu-card li { margin: 3px 0; }
+    .edu-links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; font-weight: 600; font-size: 14px; }
     @media (max-width: 720px) {
       .edu-item { grid-template-columns: 1fr; gap: 6px; padding-left: 22px; }
       .edu-when { text-align: left; padding-top: 0; }
@@ -428,13 +434,13 @@
       <div class="wrap">
         <div class="sec-head">
           <div>
-            <p class="kicker">Education</p>
+            <p class="kicker">Education &amp; experience</p>
             <h2>From physics to data science</h2>
-            <p class="sub">A physics degree gave me the experimental grounding; a master's in data science took me into machine learning and AI.</p>
+            <p class="sub">A physics degree, four years running projects and data for a rural welfare trust (including the COVID-19 vaccination drive), then a master's in data science that took me into machine learning and AI.</p>
           </div>
         </div>
         <div class="edu">
-          <div class="edu-item">
+          <div class="edu-item study">
             <div class="edu-when"><b>2022 – 2024</b><span>Jun 2022 – Aug 2024</span></div>
             <article class="edu-card">
               <div class="top">
@@ -452,7 +458,30 @@
               <div class="chips" style="margin-top:14px"><span class="chip">Machine learning</span><span class="chip">AI</span><span class="chip">Big data</span><span class="chip">Medical AI</span></div>
             </article>
           </div>
-          <div class="edu-item">
+          <div class="edu-item work">
+            <div class="edu-when"><b>2018 – 2022</b><span>Work</span></div>
+            <article class="edu-card">
+              <span class="kind">Work · Social sector</span>
+              <div class="top" style="margin-top:6px">
+                <div>
+                  <h3>Vice-Chairman · Project manager &amp; data analytics</h3>
+                  <p class="inst">Bahadurpur Boitoroni Welfare Trust (BBWT), Talipur, Farakka, Murshidabad, West Bengal</p>
+                </div>
+              </div>
+              <p style="margin-top:12px;color:var(--text-2)">A registered NGO (NGO Darpan, NITI Aayog) working on education, healthcare and community development in Murshidabad (West Bengal) and Pakur (Jharkhand).</p>
+              <ul>
+                <li>Managed the trust's projects and handled its data analysis.</li>
+                <li>Designed and built the trust's website.</li>
+              </ul>
+              <div class="edu-proj">
+                <span class="lbl">COVID-19 response · CoviSainik volunteer · 2021</span>
+                <p><b>Vaccination drive in Farakka block.</b> Worked with the Farakka Block Primary Health Centre (BPHC) and Ambuja Foundation as one of 20 CoviSainik volunteers in Talipur. At the peak of the drive in July 2021 I helped coordinate 10–12 vaccination camps a day, sometimes working 12-hour days.</p>
+              </div>
+              <div class="chips" style="margin-top:14px"><span class="chip">Project management</span><span class="chip">Data analytics</span><span class="chip">Public health</span><span class="chip">Community work</span></div>
+              <div class="edu-links"><a href="https://sites.google.com/view/bbwt" target="_blank" rel="noopener">Trust website ↗</a><a href="https://www.ambujafoundation.org/blog/covisainik-s-going-above-beyond-in-the-fight-against-covid-19" target="_blank" rel="noopener">Ambuja Foundation story ↗</a></div>
+            </article>
+          </div>
+          <div class="edu-item study">
             <div class="edu-when"><b>2014 – 2017</b><span>Jun 2014 – Dec 2017</span></div>
             <article class="edu-card">
               <div class="top">
